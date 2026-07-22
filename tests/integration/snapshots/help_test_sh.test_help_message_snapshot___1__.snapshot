@@ -1,0 +1,16 @@
+change user password on NixOS systems that use `hashedPasswordFile`
+
+USAGE: hpf-passwd [OPTIONS] [LOGIN]
+
+ARGS:
+  [LOGIN]  User to change the password of [env: $SUDO_USER, $USER]
+
+OPTIONS:
+      --dry-run                                                    Show what would be done without changing any files
+  -p, --fix-permissions                                            Set permissions for hashed password file without changing the file contents
+  -F, --flake <FLAKE-URI>                                          Flake URI to pass to nixos-option(8)
+  -I, --include <PATH>                                             Add path to Nix expression search path to pass to nixos-option(8)
+  -P, --prefix <PREFIX-DIR>                                        Prefix to add to `hashedPasswordFile` path
+      --extra-experimental-features <EXTRA-EXPERIMENTAL-FEATURES>  Additional experimental features to pass to nixos-options(8)
+  -h, --help                                                       Print help
+  -V, --version                                                    Print version
