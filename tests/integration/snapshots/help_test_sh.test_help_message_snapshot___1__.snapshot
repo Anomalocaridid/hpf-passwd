@@ -1,0 +1,12 @@
+change user password on NixOS systems that use hashedPasswordFile
+
+USAGE: hpf-passwd [OPTIONS] [LOGIN]
+
+ARGS:
+  [LOGIN]  User to change the password of (defaults to $USER)[env: USER]
+
+OPTIONS:
+  -P, --fix-permissions  Set permissions for hashed password file without changing the file contents
+      --dry-run          Show what would be done without changing any files
+  -h, --help             Print help
+  -V, --version          Print version
