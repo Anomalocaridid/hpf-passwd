@@ -25,6 +25,28 @@
             value = f system;
           }) systems
         );
+
+      # This project relies on a patch to nixos-option that adds an `--extra-experimental-features` flag
+      # TODO: remove when https://github.com/NixOS/nixpkgs/pull/546044 makes it into nixos-unstable
+      nixos-option-patched = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+
+          nixpkgs-546044-drv = pkgs.applyPatches {
+            src = pkgs.path;
+            patches = [
+              (pkgs.fetchpatch2 {
+                url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/546044.patch?full_index=1";
+                hash = "sha256-Ci1weyeWNkTwOgo/F4GcJM5eDA9ho+Ca1JOgSt37tyk=";
+              })
+            ];
+          };
+
+          nixpkgs-546044 = import nixpkgs-546044-drv { inherit (pkgs.stdenv) system; };
+        in
+        nixpkgs-546044.nixos-option
+      );
     in
     {
       packages = forAllSystems (
@@ -33,7 +55,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         rec {
-          hpf-passwd = pkgs.callPackage ./package.nix { };
+          hpf-passwd = pkgs.callPackage ./package.nix { nixos-option = nixos-option-patched.${system}; };
           default = hpf-passwd;
         }
       );
@@ -55,7 +77,7 @@
             coreutils
             gnused
             mkpasswd
-            nixos-option
+            nixos-option-patched.${system}
           ];
         }
       );
