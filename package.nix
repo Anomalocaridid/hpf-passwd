@@ -16,7 +16,7 @@
 
 resholve.mkDerivation {
   pname = "hpf-passwd";
-  version = "unstable";
+  version = "0.0.0";
 
   src = ./.;
 
