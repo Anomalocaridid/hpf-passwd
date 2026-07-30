@@ -69,6 +69,7 @@
           buildInputs = with pkgs; [
             bash-language-server # LSP for IDEs
             bashunit # Unit testing framework
+            cocogitto # Release management
             shellcheck # More diagnostics for language server
             shfmt # Formatter
 
