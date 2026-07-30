@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## 0.1.1 - 2026-07-30
+#### Bug Fixes
+- remove broken shell completion scripts - (72c85b5) - Anomalocaridid
+
+- - -
+
 ## 0.1.0 - 2026-07-30
 #### Features
 - add flake-compat support - (8450077) - Anomalocaridid
