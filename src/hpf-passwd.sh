@@ -8,7 +8,7 @@ set -o pipefail          # Propagate non-zero exit codes to the end of a pipelin
 shopt -s inherit_errexit # Allow subshells to inherit errexit setting, requires bash >=4.4
 
 # @describe change user password on NixOS systems that use `hashedPasswordFile`
-# @meta version 0.0.0
+# @meta version 0.1.0
 
 # @arg login=`get_user_from_envs`       User to change the password of [env: $SUDO_USER, $USER]
 # @flag --dry-run                       Show what would be done without changing any files
