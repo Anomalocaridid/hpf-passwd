@@ -94,12 +94,6 @@ resholve.mkDerivation {
 
   postInstall = lib.optionalString (stdenvNoCC.buildPlatform.canExecute stdenvNoCC.hostPlatform) ''
     installManPage ./build/hpf-passwd.1
-
-    installShellCompletion --cmd hpf-passwd \
-      --bash <(argc --argc-completions bash hpf-passwd) \
-      --zsh <(argc --argc-completions zsh hpf-passwd) \
-      --fish <(argc --argc-completions fish hpf-passwd) \
-      --nushell <(argc --argc-completions nushell hpf-passwd) 
   '';
 
   meta = {
