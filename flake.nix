@@ -2,7 +2,7 @@
   description = "Manage passwords on NixOS systems that use `hashedPasswordFile`";
 
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
 
     flake-compat = {
       url = "github:NixOS/flake-compat";
