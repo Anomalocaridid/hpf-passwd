@@ -78,7 +78,7 @@ resholve.mkDerivation {
     shfmt --diff $src/src/hpf-passwd.sh
 
     pushd $src
-    bashunit test --exclude-tag runs_nix
+    bashunit test
     popd
 
     runHook postCheck

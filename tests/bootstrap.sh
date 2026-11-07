@@ -44,13 +44,11 @@ export -f mock_chmod
 bashunit::mock "chmod" mock_chmod
 
 # Helpers to mock nixos-option to minimize the tests that have to be skipped in a nix sandbox
-# It is probably not a good idea to make these rely on snapshot files, but at least it's DRY
 
 # NOTE: Quotes are significant for this one because there needs to be a way to differentiate `null` and `"null"`
 function mock_nixos-option_hashedPasswordFile() {
 	if [[ "$2" =~ users\.users\..*\.hashedPasswordFile ]]; then
-		# cat "$(pwd)/tests/unit/snapshots/nixos_option_unmocked_test_sh.test_nixos_option_output_hashedPasswordFile.snapshot"
-		cat "$(pwd)/tests/unit/snapshots/nixos_option_unmocked_test_sh.test_nixos_option_output_hashedPasswordFile.snapshot" |
+		cat "$(pwd)/tests/examples/hashedPasswordFile.txt" |
 			sed "s#\"/persist/passwords/hpf-test-user\"#$1#"
 	else
 		>&2 echo "error: unexpected option"
@@ -61,7 +59,7 @@ export -f mock_nixos-option_hashedPasswordFile
 
 function mock_nixos-option_mutableUsers() {
 	if [[ "$2" == "users.mutableUsers" ]]; then
-		cat "$(pwd)/tests/unit/snapshots/nixos_option_unmocked_test_sh.test_nixos_option_output_mutableUsers.snapshot" |
+		cat "$(pwd)/tests/examples/mutableUsers.txt" |
 			sed "s# false# $1#"
 	else
 		>&2 echo "error: unexpected option"
